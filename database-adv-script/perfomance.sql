@@ -1,4 +1,5 @@
 -- Initial query to retrieve all bookings with user, property, and payment details
+EXPLAIN ANALYZE
 SELECT 
     Booking.booking_id,
     Booking.start_date,
@@ -19,4 +20,7 @@ JOIN
 JOIN 
     Property ON Booking.property_id = Property.property_id
 JOIN 
-    Payment ON Booking.booking_id = Payment.booking_id;
+    Payment ON Booking.booking_id = Payment.booking_id
+WHERE 
+    Booking.start_date >= '2023-01-01'  -- Example condition for filtering
+    AND Booking.end_date <= '2023-12-31';  -- Example condition for filtering
